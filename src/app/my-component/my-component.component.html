@@ -1,0 +1,12 @@
+<input [(ngModel)]="id">
+<br>
+<input [value]="id" readonly>
+<br><br>
+
+<input type="text" [(ngModel)]="search" placeholder="Rechercher un pokémon"/>
+<br>
+<select [(ngModel)]="pokemons">
+    <option *ngFor="let pokemon of pokemons | filterPokemonPipe:'name':search" [value]="pokemon.id">
+        {{pokemon.id}} - {{pokemon.name}}
+    </option>
+</select>
