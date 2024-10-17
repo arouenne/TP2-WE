@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
+import { PokeAPIService } from '../poke-api.service';
 
 @Component({
   selector: 'app-my-component',
@@ -9,12 +10,15 @@ import { Pokemon } from '../pokemon';
 export class MyComponentComponent {
   id: string = '';
   search: string = '';
+  selectedPokemon: number | undefined;
 
-  pokemons: Array<Pokemon> = [
-    new Pokemon(1, "Givrali"), 
-    new Pokemon(2, "Scorvol"), 
-    new Pokemon(3, "Braségali"),
-    new Pokemon(4, "Darkrai"),
-    new Pokemon(5, "Cizayox")
-  ];
+  
+
+
+  go() {
+    // @ts-ignore
+    this.selectedPokemon = document.getElementById("selectedPokemon").value;
+    // const pokemon = this.pokemons.find((p) => p.id == this.selectedPokemon);
+    // console.log(pokemon);
+  }
 }

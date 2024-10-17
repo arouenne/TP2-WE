@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { MyComponentComponent } from './my-component/my-component.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PokeAPIService } from './poke-api.service';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +21,14 @@ import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
   imports: [
     FormsModule,
     BrowserModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    [PokeAPIService] 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
