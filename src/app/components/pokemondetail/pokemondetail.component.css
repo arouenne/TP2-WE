@@ -1,0 +1,13 @@
+img {
+    width: 150px;
+    height: 150px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin: 5px 0;
+}

@@ -1,0 +1,31 @@
+<div *ngIf="pokeDetail">
+    <h3>The selected pokémon is {{ pokeDetail.name | uppercase }}</h3>
+    
+    <img [src]="pokeDetail.sprites.front_default" alt="{{ pokeDetail.name }}">
+
+    <h4>Abilities:</h4>
+    <ul>
+        <li *ngFor="let ability of pokeDetail.abilities">
+            {{ ability.ability.name }}
+        </li>
+    </ul>
+
+    <h4>Characteristics:</h4>
+    <p>Height: {{ pokeDetail.height }} decimeters</p>
+    <p>Weight: {{ pokeDetail.weight }} hectograms</p>
+    <p>Base experience: {{ pokeDetail.base_experience }}</p>
+
+    <h4>Types:</h4>
+    <ul>
+        <li *ngFor="let type of pokeDetail.types">
+            {{ type.type.name }}
+        </li>
+    </ul>
+
+    <h4>Stats:</h4>
+    <ul>
+        <li *ngFor="let stat of pokeDetail.stats">
+            {{ stat.stat.name }}: {{ stat.base_stat }}
+        </li>
+    </ul>
+</div>

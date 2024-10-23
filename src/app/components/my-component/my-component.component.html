@@ -1,0 +1,21 @@
+<mat-form-field class="field-spacing" appearance="fill">
+    <mat-label>Search for a Pokémon</mat-label>
+    <input matInput type="text" [(ngModel)]="search"
+        placeholder="Search for a Pokémon" />
+</mat-form-field>
+
+<mat-form-field class="field-spacing" appearance="fill">
+    <mat-label>Select Pokémon</mat-label>
+    <mat-select [(ngModel)]="selectedPokemonId" id="selectedPokemonId">
+        <mat-option
+            *ngFor="let pokemon of pokemons | filterPokemonPipe:'name':search"
+            [value]="pokemon.id">
+            {{pokemon.id}} - {{pokemon.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<br>
+<button mat-raised-button (click)="go()">Go!</button>
+<br><br>
+<app-pokemondetail [pokeDetail]="pokeDetail"></app-pokemondetail>
