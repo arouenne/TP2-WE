@@ -192,10 +192,11 @@ export interface Type {
 export class Pokemon {
     id: number;
     name: string;
-    infos: object | undefined;
+    sprite: any;
 
-    constructor(id: number, name: string) {
+    constructor(id: number, name: string, sprite: any) {
         this.id = id;
         this.name = name;
+        this.sprite = sprite;
     }
 }

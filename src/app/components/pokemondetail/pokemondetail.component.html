@@ -1,31 +1,42 @@
-<div *ngIf="pokeDetail">
-    <h3>The selected pokémon is {{ pokeDetail.name | uppercase }}</h3>
-    
-    <img [src]="pokeDetail.sprites.front_default" alt="{{ pokeDetail.name }}">
+<div *ngIf="pokeDetail" class="pokemon-info">
 
-    <h4>Abilities:</h4>
+  <div class="sprites">
+    <img [src]="pokeDetail.sprites.front_default"
+      alt="{{ pokeDetail.name }}">
+    <img [src]="pokeDetail.sprites.front_shiny" alt="{{ pokeDetail.name }}">
+  </div>
+
+  <h3>{{ pokeDetail.name | titlecase}}</h3>
+
+  <div class="pokemon-type">
     <ul>
-        <li *ngFor="let ability of pokeDetail.abilities">
-            {{ ability.ability.name }}
-        </li>
+      <li *ngFor="let type of pokeDetail.types"
+        [ngStyle]="{'background-color': getTypeColor(type.type.name)}">
+        {{ type.type.name | uppercase }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="details">
+    <h4>Abilities:</h4>
+    <ul class="abilities">
+      <li *ngFor="let ability of pokeDetail.abilities">
+        {{ ability.ability.name | titlecase }}
+      </li>
     </ul>
 
     <h4>Characteristics:</h4>
-    <p>Height: {{ pokeDetail.height }} decimeters</p>
-    <p>Weight: {{ pokeDetail.weight }} hectograms</p>
-    <p>Base experience: {{ pokeDetail.base_experience }}</p>
-
-    <h4>Types:</h4>
-    <ul>
-        <li *ngFor="let type of pokeDetail.types">
-            {{ type.type.name }}
-        </li>
-    </ul>
+    <div class="characteristics">
+      <p>Height: {{ pokeDetail.height }} decimeters</p>
+      <p>Weight: {{ pokeDetail.weight }} hectograms</p>
+      <p>Base experience: {{ pokeDetail.base_experience }}</p>
+    </div>
 
     <h4>Stats:</h4>
-    <ul>
-        <li *ngFor="let stat of pokeDetail.stats">
-            {{ stat.stat.name }}: {{ stat.base_stat }}
-        </li>
+    <ul class="stats">
+      <li *ngFor="let stat of pokeDetail.stats">
+        {{ stat.stat.name | titlecase }}: {{ stat.base_stat }}
+      </li>
     </ul>
+  </div>
 </div>

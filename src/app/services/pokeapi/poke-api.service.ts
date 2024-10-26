@@ -3,21 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PokeDetail, PokeServiceRes } from '../../models/pokemon';
 
-const url = "https://pokeapi.co/api/v2/pokemon/";
+const url = "https://pokeapi.co/api/v2/pokemon";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokeAPIService {
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
   }
 
   getPokemons(): Observable<PokeServiceRes> {
-    return this.httpClient.get<PokeServiceRes>(url);
+    return this.httpClient.get<PokeServiceRes>(url + "?limit=649");
   }
 
-  getPokemonDetail(name : string): Observable<PokeDetail> {
-    return this.httpClient.get<PokeDetail>(url + name + '/');
+  getPokemonDetail(name: string): Observable<PokeDetail> {
+    return this.httpClient.get<PokeDetail>(url + "/" + name + "/");
   }
 }

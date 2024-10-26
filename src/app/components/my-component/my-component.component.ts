@@ -24,7 +24,18 @@ export class MyComponentComponent {
       (data) => {
         this.pokemons = [];
         data.results.forEach((pokemon: any, index: number) => {
-          this.pokemons.push(new Pokemon(index + 1, pokemon.name));
+          const pokemonToDisplay = new Pokemon(index + 1, pokemon.name, [])
+          this.pokeAPIService.getPokemonDetail(pokemon.name).subscribe(
+            (data) => {
+              pokemonToDisplay.sprite = data.sprites.front_default;
+            },
+            (error) => {
+              console.error('Error fetching pokemon detail', error);
+            }
+          );
+
+          this.pokemons.push(pokemonToDisplay);
+
         });
       },
       (error) => {
@@ -46,5 +57,16 @@ export class MyComponentComponent {
         }
       );
     }
+  }
+
+  loadPokemonDetail(pokemon: Pokemon) {
+    this.pokeAPIService.getPokemonDetail(pokemon.name).subscribe(
+      (data) => {
+        this.pokeDetail = data;
+      },
+      (error) => {
+        console.error('Error fetching pokemon detail', error);
+      }
+    );
   }
 }
