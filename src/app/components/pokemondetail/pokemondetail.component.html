@@ -6,7 +6,9 @@
     <img [src]="pokeDetail.sprites.front_shiny" alt="{{ pokeDetail.name }}">
   </div>
 
-  <h3>{{ pokeDetail.name | titlecase}}</h3>
+  <p>No. {{ pokeDetail.id }}</p>
+
+  <h3> {{ pokeDetail.name | titlecase}}</h3>
 
   <div class="pokemon-type">
     <ul>
@@ -18,21 +20,21 @@
   </div>
 
   <div class="details">
-    <h4>Abilities:</h4>
+    <h4>Abilities</h4>
     <ul class="abilities">
       <li *ngFor="let ability of pokeDetail.abilities">
         {{ ability.ability.name | titlecase }}
       </li>
     </ul>
 
-    <h4>Characteristics:</h4>
+    <h4>Characteristics</h4>
     <div class="characteristics">
       <p>Height: {{ pokeDetail.height }} decimeters</p>
       <p>Weight: {{ pokeDetail.weight }} hectograms</p>
       <p>Base experience: {{ pokeDetail.base_experience }}</p>
     </div>
 
-    <h4>Stats:</h4>
+    <h4>Stats</h4>
     <ul class="stats">
       <li *ngFor="let stat of pokeDetail.stats">
         {{ stat.stat.name | titlecase }}: {{ stat.base_stat }}
